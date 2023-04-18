@@ -1,0 +1,11 @@
+﻿<a href="{% url 'home' %}">Главная</a><br>
+<a href="{% url 'news' %}">Назад</a><br>
+{% for ad in ad %}
+<h2>{{ad.title}}</h2>
+<div><b>Тег: {{ad.tag}}</b></div>
+<blockquote>{{ad.text}}</blockquote>
+<div><b>@{{ad.author}}</b></div>
+<div><i>{{ad.time_create}}</i></div>
+
+{% endfor %}
+

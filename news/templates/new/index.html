@@ -1,0 +1,24 @@
+<a href="{% url 'home' %}">Главная</a><br>
+<h1>5 последних новостей</h1>
+<div>
+    {% for ad in ad %}
+        <section>
+            <hr>
+            <h5>{{ad.title}}</h5>
+            <a href="{% url 'news_info' ad.pk %}">Читать продолжение...</a>
+        </section>
+    {% endfor %}
+</div>
+
+
+{% if request.user.is_authenticated %}
+<h2>Создать новость</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Создать">
+</form>
+	{% else %}
+		
+        <h2>Войдите, чтобы создать новость</h2>
+	{% endif %}
